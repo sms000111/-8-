@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <style>
+.main_container{
+    border: 0px solid;
+}
+
+.login_container{
+    width: 600px; 
+    height: 520px; 
+    margin: auto; 
+    border-radius: 3px; 
+    box-shadow: 0px 0px 20px #000;
+    margin-top: 100px;
+}
+
+.form_container{
+    width: 300px;
+    margin: auto;
+}
+
+.form_title_div{
+    margin: auto; 
+    text-align: center;
+}
+
+.form_title_p{
+    font-weight: bold; 
+    font-size: 22px; 
+    display: inline-block; 
+    padding-top: 8px;
+}
+
+.form_input{
+    width: 98%; 
+    height: 30px; 
+    border: 1px solid; 
+    border-radius: 3px; 
+    border-color: gray;
+}
+
+.form_item_name{
+    color: gray;
+}
+
+.form_text_alert{
+    height: 20px;
+}
+
+.form_text_alert_padding{
+    padding-bottom: 10px;
+}
+
+.form_login_button{
+    margin-bottom: 5px;
+    width: 100%; 
+    height: 44px; 
+    background-color: rgb(83, 154, 236); 
+    border: 1px; 
+    border-radius: 3px; 
+    color: white; 
+    font-size: 17px; 
+    font-weight: 500;
+}
+.form_login_button:hover{
+    color: aliceblue;
+    background-color: blue;
+}
+.form_sign_button{
+    margin-bottom: 5px;
+    width: 100%; 
+    height: 44px; 
+    background-color: rgb(83, 154, 236); 
+    border: 1px; 
+    border-radius: 3px; 
+    color: white; 
+    font-size: 17px; 
+    font-weight: 500;
+}
+.form_sign_button:hover{
+    color: aliceblue;
+    background-color: blue;
+}
+.tab{height: 130px; width: 100%; background-color: rgb(173, 149, 229); position: relative; top: 0; left: 0;}
+    .flex{display: flex; height: 50px; width: 90%; justify-content: space-around; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); }
+    .panel{width: 24.5%; border-radius: 5px; height: 50px; display: block; background-color: black; text-align: center; line-height: 50px; color: white; font-size: large;}
+    .panel:hover{background-color: white !important; color:black !important;}
+    </style>
+<script>
+    function login() {
+    const form = document.login_form;
+    const chkUsername = checkValidUsername(form);
+    const chkEmail = checkValidEmail(form);
+    const chkPw = checkValidPassword(form);
+    const chkPw2 = checkValidPassword2(form);
+
+    if (chkUsername) {
+        
+        document.getElementById('alert_username').innerText = "";
+        form.username.style.border = '2px solid';
+        form.username.style.borderColor = '#00D000';
+    } else {
+        form.username.style.border = '2px solid';
+        form.username.style.borderColor = '#FF0000';
+        document.getElementById('alert_username').style.color = '#FF0000';
+    }
+
+    if (chkEmail) {
+        document.getElementById('alert_email').innerText = "";
+        form.email.style.border = '2px solid';
+        form.email.style.borderColor = '#00D000';
+    } else {
+        form.email.style.border = '2px solid';
+        form.email.style.borderColor = '#FF0000';
+        document.getElementById('alert_email').style.color = '#FF0000';
+    }
+
+    if (chkPw) {
+        document.getElementById('alert_password').innerText = "";
+        form.password.style.border = '2px solid';
+        form.password.style.borderColor = '#00D000';
+    } else {
+        form.password.style.border = '2px solid';
+        form.password.style.borderColor = '#FF0000';
+        document.getElementById('alert_password').style.color = '#FF0000';
+    }
+    if (chkPw2) {
+        document.getElementById('alert_password2').innerText = "";
+        form.password2.style.border = '2px solid';
+        form.password2.style.borderColor = '#00D000';
+    } else {
+        form.password2.style.border = '2px solid';
+        form.password2.style.borderColor = '#FF0000';
+        document.getElementById('alert_password2').style.color = '#FF0000';
+    }
+
+    if (chkUsername && chkEmail && chkPw && chkPw2) {
+            alert("로그인 완료 되었습니다.");
+            location.href='메인.html';
+        
+    }
+}
+
+function sign(){
+    alert("회원가입으로 이동합니다.");
+    location.href='회원가입.html';
+}
+
+function checkValidUsername(form) {
+    if (form.username.value == "") {
+        document.getElementById('alert_username').innerText = "이름을 입력해 주세요.";
+        return false;
+    }
+
+    return true;
+}
+
+function checkValidEmail(form) {
+    if (form.email.value == "") {
+        document.getElementById('alert_email').innerText = "이메일을 입력해 주세요.";
+        return false;
+    }
+
+    const exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+
+    if (exptext.test(form.email.value) === false) {
+        document.getElementById('alert_email').innerText = "이메일이 유효하지 않습니다.";
+        return false;
+    }
+
+    return true;
+}
+
+function checkValidPassword(form) {
+    if (form.password.value == "") {
+        document.getElementById('alert_password').innerText = "비밀번호를 입력해주세요.";
+        return false;
+    }
+
+    const pw = form.password.value;
+    const num = pw.search(/[0-9]/g);
+    const eng = pw.search(/[a-z]/ig);
+    const spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    if (pw.length < 6) {
+        document.getElementById('alert_password').innerText = "최소 6글자 이상 입력해주세요.";
+        return false;
+    } else if (pw.search(/\s/) != -1) {
+        document.getElementById('alert_password').innerText = "공백없이 비밀번호를 입력해 주세요.";
+        return false;
+    } else if (num < 0 && eng < 0 && spe < 0) {
+        document.getElementById('alert_password').innerText = "비밀번호가 유요하지 않습니다.";
+        return false;
+    }
+
+    return true;
+}
+
+function checkValidPassword2(form) {
+    if (form.password2.value == "") {
+        document.getElementById('alert_password2').innerText = "비밀번호를 재입력 해주세요.";
+        return false;
+    }
+
+    if (form.password.value !== form.password2.value) {
+        document.getElementById('alert_password2').innerText = "비밀번호가 일치하지 않습니다.";
+        form.password.style.border = '2px solid';
+        form.password.style.borderColor = '#FF0000';
+        document.getElementById('alert_password').style.color = '#FF0000';
+        return false;
+    }
+
+    return true;
+}
+</script>
+</head>
+<body>
+    <div id="container" class="main_container">
+        <div class="tab">
+            <div class="flex">
+                <a href= "메인.html" class="panel">Home</a>
+                <a href="로그인.html" class="panel">로그인</a>
+                <a href="교통법규 위반 신고 주석제거.html" class="panel">교통법규 위반신고</a>
+                <a href="여성범죄 신고.html" class="panel">여성범죄 신고</a>
+            </div>
+        </div>
+        <div style="padding: 20px;"></div>
+        <div class="login_container">
+            <div class="form_container">
+            
+                <form name="login_form" action="/cookie" method="get">
+                    <div class="form_title_div">
+                        <p class="form_title_p">로그인</p>
+                    </div>
+                    <div>
+                        <div>
+                            <a class="form_item_name">이름</a>
+                        </div>
+                        <div>
+                            <input type="text" name="username" placeholder="이름" class="form_input"/>
+                        </div>
+                        <div class="form_text_alert_padding">
+                            <div id="alert_username" class="form_text_alert"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <a class="form_item_name">이메일</a>
+                        </div>
+                        <div>
+                            <input type="text" name="email" placeholder="이메일" class="form_input"/>
+                        </div>
+                        <div class="form_text_alert_padding">
+                            <div id="alert_email" class="form_text_alert"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <a class="form_item_name">비밀번호</a>
+                        </div>
+                        <div>
+                            <input type="password" name="password" placeholder="비밀번호" class="form_input" />
+                        </div>
+                        <div class="form_text_alert_padding">
+                            <div id="alert_password" class="form_text_alert"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <a class="form_item_name">비밀번호 재입력</a>
+                        </div>
+                        <div>
+                            <input type="password" name="password2" onfocus="" placeholder="비밀번호 재입력" class="form_input" />
+                        </div>
+                        <div class="form_text_alert_padding">
+                            <div id="alert_password2" class="form_text_alert"></div>
+                        </div>
+                    </div>
+                    <div style="height: 0px;"></div>
+                    <div>
+                        <button type="button" class="form_login_button" onclick="login()">로그인</button>
+                        <button type="button" class="form_sign_button" onclick="sign()">회원가입</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

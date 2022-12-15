@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교통법규 위반 신고</title>
+</head>
+
+<style>
+    .clearfix { clear: both; content: ''; display: block }
+    
+    #my_site {
+        background-color: white;
+    }
+    #header {
+        background-color: rgb(203, 212, 252);
+        height: 70px;
+        text-align: center;
+        font-size: 40px;
+        color: rgba(29, 51, 148, 0.663);
+    }
+    #nav {
+        float: left;
+        background-color: white;
+        width: 100%;
+        height: 50px;
+        border-bottom: 1px solid green;
+    }
+
+    #nav > div {
+        background-color: white;
+        width: 100px;
+        height: 30px; 
+        float: left;
+        text-align: center;
+        border-right: 1px solid blue;
+        margin: 10px;
+    }
+
+    #main {
+        float: left;
+        width: 100%;
+        height: 1000px;
+        text-align: center;
+        background-color: white;
+    }
+
+    .elements {
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .elements > p {
+        text-align: left;
+    }
+
+    .elements_float_left {
+        background-color: white; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .elements_float_left > p {
+        text-align: left;
+        float: left;
+    }
+
+    #footer {
+        float: left;
+        background-color: white;
+        border-top: 1px solid #ddd;
+        height: 100px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .tab{height: 130px; width: 100%; background-color: rgb(39, 55, 111); position: relative; top: 0; left: 0;}
+    .flex{display: flex; height: 50px; width: 90%; justify-content: space-around; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); }
+    .panel{width: 24.5%; border-radius: 5px; height: 50px; display: block; background-color: black; text-align: center; line-height: 50px; color: white; font-size: large;}
+    .active{background-color: white !important; color:black !important;}
+
+    </style>
+
+    <script>
+        function resetCheckbox()  {
+                  const checkboxes = document.getElementsByName("checkbox");  
+            checkboxes.forEach((checkbox) => {      
+              checkbox.checked = false;      
+            })      
+          }
+        
+        function checkCheckbox() {
+            var check_num = 0;
+            const checkboxes = document.getElementsByName("checkbox");
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked == true) {
+                check_num = check_num + 1;
+                }
+                
+            })
+            if (check_num == 0) {
+                alert("위법사항을 체크해주세요");
+                return 1;
+            }
+
+        }
+
+        function telCheck() {
+            var telcheck = /\d{3}-\d{4}-\d{4}/;
+            var phone_number_check = document.getElementsByName("phone_number")[0].value;
+            if (telcheck.test(phone_number_check) == false) {
+                alert("연락처 형식이 잘못되었습니다");
+                return 1;
+            }
+        }
+
+        function emailCheck() { 
+            var emailcheck1 = /[0-9a-zA-Z]/;
+            var emailcheck2 = /[0-9a-zA-Z].{1}[a-zA-Z]{2,3}/; 
+            var emailcheck1_check = document.getElementsByName("email_1")[0].value;
+            var emailcheck2_check = document.getElementsByName("email_2")[0].value;
+            if (emailcheck1.test(emailcheck1_check) == false || emailcheck2.test(emailcheck2_check) == false) {
+                alert("이메일 형식이 잘못되었습니다");
+                return 1;
+            }
+        }
+        function dateCheck() {
+            var datecheck = document.getElementsByName("date")[0].value;
+            if (datecheck == false) {
+                alert("날짜를 입력해주세요");
+                return 1;
+            }
+        }
+        function nameCheck() {
+            var namecheck = document.getElementsByName("name")[0].value;
+            if (namecheck == false) {
+                alert("이름을 입력해주세요");
+                return 1;
+            }
+        }
+
+        function placeCheck() {
+            var placecheck = document.getElementsByName("place")[0].value;
+            if (placecheck == false) {
+                alert("장소를 입력해주세요");
+                return 1;
+            }
+        }
+
+        function contentsCheck() {
+            var contentscheck = document.getElementsByName("contents")[0].value;
+            if (contentscheck == false) {
+                alert("내용을 입력해주세요");
+                return 1;
+            }
+        }
+
+        function carnumberCheck() {
+            var carnumbercheck = document.getElementsByName("carnumber")[0].value;
+            if (carnumbercheck == false) {
+                alert("차량번호를 입력해주세요");
+                return 1;
+            }
+        }
+
+        function timeCheck() {
+            var timecheck = document.getElementsByName("time")[0].value;
+            if (timecheck == false) {
+                alert("시간을 입력해주세요");
+                return 1;
+            }
+        }
+
+        function allCheck() {
+            if (checkCheckbox() == 1) {return 0;}
+            if (telCheck() == 1) {return 0;}
+            if (nameCheck() == 1) {return 0;}   
+            if (emailCheck() == 1) {return 0;}
+            if (dateCheck() == 1) {return 0;} 
+            if (timeCheck() == 1) {return 0;}   
+            if (carnumberCheck() == 1) {return 0;}
+            if (placeCheck() == 1) {return 0;}  
+            if (contentsCheck() == 1) {return 0;} 
+        }
+
+    </script>
+<body>
+    <div id="my_site">
+        <div class="tab">
+            <div class="flex">
+                <a href="메인.html" class="panel">Home</a>
+                <a href="로그인.html" class="panel">로그인</a>
+                <a href="교통법규 위반 신고.html" class="panel active">교통법규 위반신고</a>
+                <a href= "여성범죄 신고 최종.html" class="panel">여성범죄 신고</a>
+            </div>
+        </div>
+        <div id="header">교통법규 위반신고</div>
+        <div id="main">
+            <div class="elements clearfix" >
+                <p>위법사항</p>
+                <p><input type="checkbox" name="checkbox">신호위반</p>
+                <p><input type="checkbox" name="checkbox">중앙선 침범 </p>
+                <p><input type="checkbox" name="checkbox">끼어들기 금지 위반 </p>
+                <p><input type="checkbox" name="checkbox">교차로 통행방법 위반 (꼬리물기) </p>
+                <p><input type="checkbox" name="checkbox">방향 지시등 불이행 </p>
+                <p><input type="checkbox" name="checkbox">장애인 전용 주차장 무시 </p>
+                <p><input type='button' name='resetCheckboxBtn' value='초기화' onclick='resetCheckbox()'/></p>
+            </div>            
+            <div class="elements_float_left clearfix">
+                <p>연락처 <input type="text" name="phone_number"></p>
+                <p> 이름 <input type="text" name="name"></p>
+            </div>
+            <div class="elements_float_left clearfix">
+                <p>이메일 <input type="text" name="email_1"></p> 
+                <p>@<input type="text" name="email_2"></p> 
+            </div>  
+            <div class="elements_float_left clearfix">
+                <p>시간 <input type="date" name="date"></p>
+                <p><input type="time" name="time"></p>
+                <p>차량번호 <input type="text" name="carnumber"></p>
+            </div>
+            <div class="elements clearfix">                
+                <p>위반장소 <input type="text" name="place"></p>
+                <p>신고내용<textarea rows="10" cols="100" name="contents"></textarea></p>
+                <p>첨부파일 <input type="file" value="업로드"></p>                
+            </div>
+            <p><input type='button' name='send' value='전송' onclick='allCheck()'/></p>           
+        </div>    
+        <div id="footer"></div>
+    </div>
+</body>

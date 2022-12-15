@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+	.tab{height: 130px; width: 100%; background-color: rgb(173, 149, 229); position: relative; top: 0; left: 0;}
+    .flex{display: flex; height: 50px; width: 90%; justify-content: space-around; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); }
+    .panel{width: 24.5%; border-radius: 5px; height: 50px; display: block; background-color: black; text-align: center; line-height: 50px; color: white; font-size: large;}
+    .panel:hover{background-color: white !important; color:black !important;}
+</style>
+<script>
+
+    window.addEventListener('load', function() {
+		var signup = document.querySelector('#signup');
+		
+	
+		signup.addEventListener('click', function() {
+
+			var email = document.querySelector('#email');
+			var pw1 = document.querySelector('#pw1');
+			var pw2 = document.querySelector('#pw2');
+			var gender = document.querySelectorAll(".gender");
+			var username = document.querySelector('#username');
+			var birth = document.querySelector('#birth');
+			var phone = document.querySelector('#phone');
+			
+
+			var genderVal = false;
+			for (var i = 0; i < gender.length; i++) {
+				if (gender[i].checked) {
+
+					genderVal = true;
+				}
+			}
+			
+		
+			if (email.value == '') {
+				alert('이메일을 입력해주세요');
+				email.focus();
+			} else if (pw1.value == '' || pw1.value.length < 6) {
+				alert('비밀번호를 6자리이상 입력해 주세요.');
+				pw1.focus();
+			} else if (pw1.value != pw2.value) {
+				alert('패스워드가 일치하지 않습니다.');
+				pw2.focus();
+			} else if (genderVal == false) {
+				alert("성별을 선택하세요");
+				gender[0].focus();
+			} else if (username.value < 3) {
+				alert("이름을 확인해주세요");
+				username.focus();
+			} else if (birth.value == '') {
+				alert('생년월일을 입력해주세요');
+				birth.focus();
+			} else if (phone.value <12  || isNaN(phone.value)) {
+				alert('전화번호를 확인해주세요 ')
+				phone.focus();
+			} else {
+				alert="회원가입이 완료 되었습니다."
+				location.href = "로그인.html";
+			}
+
+		});
+	});
+
+</script>
+<body>
+	<div class="tab">
+		<div class="flex">
+			<a href= "메인.html" class="panel">Home</a>
+			<a href="로그인.html" class="panel">로그인</a>
+			<a href="교통법규 위반 신고 주석제거.html" class="panel">교통법규 위반신고</a>
+			<a href="여성범죄 신고.html" class="panel">여성범죄 신고</a>
+		</div><br><br><br><br><br><br><br><br>
+		
+    <form name=fom>
+		<fieldset>
+			<legend>회원가입</legend>
+			<table>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" id="email" name="email"> @ <select
+						id="url">
+							<option>naver.com</option>
+							<option>daum.net</option>
+							<option>nate.com</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>비밀번호<br>비밀번호 확인
+					</td>
+					<td><input type="password" id="pw1" name="pw1"><br>
+						<input type="password" id="pw2" name="pw2"></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><input type="radio" value="male" name="gender"
+						class="gender">남 <input type="radio" value="female"
+						name="gender" class="gender">여</td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" id="username" name="name"></td>
+				</tr>
+				<tr>
+					<td>생일</td>
+					<td><input type="date" id="birth" name="birth"></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text" id="phone" name="phone"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" id="signup"
+						value="signup"> <input type="reset" value="reset">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

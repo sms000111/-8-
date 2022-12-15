@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #header {
+        background-color: rgb(203, 212, 252);
+        height: 70px;
+        text-align: center;
+        font-size: 40px;
+        color: rgba(29, 51, 148, 0.663);
+    }
+
+    .elements_float_left>p {
+        text-align: left;
+        float: left;
+    }
+
+    .elements>p {
+        text-align: left;
+
+    }
+
+    .elements {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .clearfix {
+        clear: both;
+        content: '';
+        display: block
+    }
+    
+    *{margin: 0; padding: 0; list-style: none; text-decoration: none;}
+        .tab{height: 130px; width: 100%; background-color: rgb(39, 55, 111); position: relative; top: 0; left: 0;}
+        .flex{display: flex; height: 50px; width: 90%; justify-content: space-around; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); }
+        .panel{width: 24.5%; border-radius: 5px; height: 50px; display: block; background-color: black; text-align: center; line-height: 50px; color: white; font-size: large;}
+        .active{background-color: white !important; color:black !important;}
+        .content{display: none;}
+        .on{display: block !important;}
+
+</style>
+
+<body>
+    <div class="tab">
+        <div class="flex">
+            <a href="메인.html" class="panel">Home</a>
+            <a href="로그인.html" class="panel">로그인</a>
+            <a href="교통법규 위반 신고 주석제거.html" class="panel">교통법규 위반신고</a>
+            <a href= "여성범죄 신고 최종.html" class="panel active">여성범죄 신고</a>
+            
+            
+        </div>
+    </div>
+
+      
+    
+    <div id="header">여성폭력 범죄신고</div>
+    <div>여성폭력 범죄 등 제보 신고는 웹제보시 실명제보만 가능합니다.<br>
+        <font color="red" size=1>●</font>는 필수 입력 사항 입니다.<br><br>
+    </div>
+    <div id="main">
+        <font color="red" size=1>●</font><b>신고분류</b>
+    </div>
+    <div class="elements_float_left clearfix">
+
+        <p><input type="checkbox">성폭력</p>
+        <p><input type="checkbox">가정폭력 </p>
+        <p><input type="checkbox">데이트 폭력 </p>
+        <p><input type="checkbox">불법촬영 </p>
+        <p><input type="checkbox">스토킹 </p>
+        <p><input type="checkbox">2차 피해신고 </p>
+
+    </div>
+    <div class="element clearfix">
+        <font color="red" size=1>●</font><b>연락처<b>
+    </div>
+    <div class="elements_float_left clearfix">
+        <p> <input type="number" name="phone_number"></p>
+        <p>이름 <input type="text" name="name"></p>
+
+    </div>
+    <div class="elements_float_left clearfix">
+        <p>이메일<br> <input type="text" name="email"></p><br>
+        <p>@ <input type="text" name="email"></p> <br>
+    </div>
+    <div class="elements clearfix">
+
+        <p>
+            <font color="red" size=1>●</font>사건발생 일자 및 시간
+        </p>
+        <label for="date">
+            <input type="date" id="date" max="2022-12-20" min="2000-12-20" value="2022-12-15">
+        </label>
+        <select name="시간">
+            <option value="12시">12시
+            <option value="1시">1시
+            <option value="2시">2시
+            <option value="3시">3시
+            <option value="4시">4시
+            <option value="5시">5시
+            <option value="6시">6시
+            <option value="7시">7시
+            <option value="8시">8시
+            <option value="9시">9시
+            <option value="10시">10시
+            <option value="11시">11시
+            <option value="12시">12시
+            <option value="13시">13시
+            <option value="14시">14시
+            <option value="15시">15시
+            <option value="16시">16시
+            <option value="17시">17시
+            <option value="18시">18시
+            <option value="19시">19시
+            <option value="20시">20시
+            <option value="21시">21시
+            <option value="22시">22시
+            <option value="23시">23시
+            <option value="24시">24시</option>
+        </select>
+
+        <select name="분">
+            <option value="0~10분">0~10분
+            <option value="10~20분">10~20분
+            <option value="20~30분">20~30분
+            <option value="30~40분">30~40분
+            <option value="40~50분">40~50분
+            <option value="50~00분">50~00분</option>
+        </select>
+    </div><br>
+    <div class="elements clearfix">
+
+        <p>
+            <font color="red" size=1>●</font>사건발생 지역
+        </p></div>
+        <p id="test">주소를 입력하세요.<button onclick="myFunction()">주소찾기</button></p>
+        
+
+        
+
+
+
+    
+
+
+
+<div class="elements clearfix">
+
+    <p>
+        <font color="red" size=1>●</font>신고내용<br>
+        <textarea rows="10" cols="100"></textarea>
+    </p></div>
+    <div class="elements clearfix">
+        <p>
+        첨부 파일<input type="file" value="업로드"></p>
+        <button onclick="accept()">접수하기</button>
+        
+        
+        
+        <script>
+            function accept() {
+              if (window.confirm("신고가 접수 되었습니다.")) {
+                location.href='메인.html'
+              }
+            
+               else {
+                console.log("취소. 변화 없음");
+              }
+            }
+            
+
+
+        $('.flex a').click(function(){
+            let index = $(this).index(); 
+            index++;
+            $('.flex a').removeClass('active');
+            $(this).addClass('active');
+            $('.content').removeClass('on');
+            $('#contents'+index).addClass('on');
+        })
+
+        function myFunction() {
+  let text;
+  let house = prompt("주소를 입력하세요");
+  
+  if (house == null || house == "") {
+    text = "주소를 입력하세요";
+  } else {
+    text = "현재 주소: " + house;
+  }
+  
+  document.getElementById("test").innerHTML = text;
+}
+
+
+          </script>
+
+        
+    
+</body>
+
+</html>

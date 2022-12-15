@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인</title>
+    <style>
+        .nav {
+            height:  70px;
+            border-bottom: 1px solid black;
+            display: flex;
+            align-items: center;
+        }
+        .nav-button{
+            display: flex;
+            margin-left: auto;
+        }
+        .main-name{
+            margin-left: 20px;
+        }
+        .btnHome{
+            margin-left: 10px;
+            padding: .5rem 1rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            border-radius: .3rem;
+            color: #007bff;
+            background-color: transparent;
+            background-image: none;
+            border-color: #007bff;
+            margin-top: 0px;
+            display: inline-block;
+
+        }
+        .btnHome:hover{
+            color:aliceblue;
+            background-color: blue;
+        }
+        .btnLogin{
+            margin-left: 10px;
+            padding: .5rem 1rem;
+            font-size: 1.25rem;
+            line-height: 1;
+            border-radius: .3rem;
+            color: #007bff;
+            background-color: transparent;
+            background-image: none;
+            border-color: #007bff;
+            margin-top: 0px;
+        }
+        .btnLogin:hover{
+            color:aliceblue;
+            background-color: blue;
+        }
+        .btnSign{
+            margin-left: 10px;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            line-height: 1;
+            border-radius: .3rem;
+            color: #007bff;
+            background-color: transparent;
+            background-image: none;
+            border-color: #007bff;
+            margin-top: 0px;
+        }
+        .btnSign:hover{
+            color:aliceblue;
+            background-color: blue;
+        }
+        .title{
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 100px;
+        }
+        .subtitle{
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 100px;
+        }
+        .main{
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+        .img{
+            display: flex;
+        }
+        .img-item{
+            width: 300px;
+            height: 350px;
+            border: 1px solid black;
+            margin: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .img-item-title{
+            font-size: 1.5rem;
+            background: rgba(0,0,0,.03);
+            height: 53px;
+            line-height: 53px;
+            border-bottom: 1px solid black
+        }
+
+    </style>
+    <script>
+        function home(){
+            location.href='메인.html';
+        }
+        function login(){
+            location.href='로그인.html';
+        }
+        function sign(){
+            location.href='회원가입.html';
+        }
+        function bus(){
+            
+            location.href='여성범죄 신고 최종.html';
+        }
+        function woman(){
+            location.href='교통법규 위반 신고 주석제거.html';
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="main-name">
+            <img src="신고.png">
+        </div>
+        <div class="nav-button">
+            <button class="btnHome" onclick="home()">홈</button>
+            <button class="btnLogin" onclick="login()">로그인</button>
+            <button class="btnSign" onclick="sign()">회원가입</button>
+        </div>
+    
+</div>
+<div class="main">
+    <div class="title">
+        제보를 받습니다
+    </div>
+    <div class="subtitle">
+        우리 주변에서 공공연하게 나타나는 다양한 위법 문제들을<br>
+        쉽고 빠르게 신고해주세요 여러분들의 도움이 필요합니다.<br>
+        아래 이미지를 눌러 원하는 신고 페이지로 이동하세요!
+    </div>
+    <div class="img">
+        <div class="img-item">
+            <div class="img-item-title">
+                교통법규
+            </div>
+            <div>
+                <img src="교통.png" onclick="bus()">
+            </div>
+            
+        
+        </div>
+        <div class="img-item">
+            <div class="img-item-title">
+                여성범죄
+            </div>
+            <div>
+                <img src="여성.png" onclick="woman()">
+            </div>
+        </div>
+        <div class="img-item">
+            <div class="img-item-title">
+                기타
+            </div>
+            <div>
+                <img src="기타.png" onclick="some()">
+            </div>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>
